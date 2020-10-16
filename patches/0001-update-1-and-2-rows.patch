@@ -1,0 +1,24 @@
+From 2fe1a9754f0bc95237fcb735ea7b221496dc5ece Mon Sep 17 00:00:00 2001
+From: alenaivanova-ebs <iea86@tut.by>
+Date: Fri, 16 Oct 2020 17:33:11 +0300
+Subject: [PATCH] update 1 and 2 rows
+
+---
+ firstFile.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/firstFile.txt b/firstFile.txt
+index 73330b0..0a626c0 100644
+--- a/firstFile.txt
++++ b/firstFile.txt
+@@ -1,5 +1,5 @@
+-qqqq
+-wwww
++QQQQ
++WWWW
+ eeee
+ rrrr
+ tttt
+-- 
+2.26.0.windows.1
+

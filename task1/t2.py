@@ -6,7 +6,6 @@ def get_calc(x, y):
     output = f"Result is {result}."
     return output
 
-
 x = float(input("Enter x:"))
 y = float(input("Enter y:"))
 

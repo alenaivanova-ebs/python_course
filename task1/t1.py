@@ -9,7 +9,6 @@ def get_calc(a, b):
     output = f"Sum is {sum}. Diff is {diff}. Multiply is {multiply}."
     return output
 
-
 a = float(input("Enter a:"))
 b = float(input("Enter b:"))
 

@@ -1,4 +1,3 @@
-
 def get_calc(a, b):
     """
     Даны катеты прямоугольного треугольника.
@@ -10,10 +9,8 @@ def get_calc(a, b):
     output = f"Gipotenuza = {c}. S = {s}. "
     return output
 
-
 a = float(input("Enter a:"))
 b = float(input("Enter b:"))
-
 
 print(get_calc(a, b))
 

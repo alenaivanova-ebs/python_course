@@ -77,7 +77,7 @@ def generate_report(year, month, day_from, day_to):
                     number_of_cups_per_day += purchase[tuple(key)]
                     number_of_clients_per_day += 1
 
-            output = f"Date of purchase is {d}.  Number of cups is {number_of_cups_per_day}. Number of clients is {number_of_clients_per_day}"
+            output = f"Date is {d}.  Number of cups is {number_of_cups_per_day}. Number of clients is {number_of_clients_per_day}"
             print(output)
 
 

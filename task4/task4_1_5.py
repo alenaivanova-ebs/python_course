@@ -56,32 +56,33 @@ def generate_purchase(year, month, day_from, day_to):
 
 # 3. Кафе работает 5 дней в неделю. В конце недели надо составить отчёт по кол-ву клиентов и покупок.
 def generate_report(year, month, day_from, day_to):
-    sum_number_of_cups = 0
-    number_of_clients = 0
 
     # Check whether the current day is last day of week
     if datetime.datetime.now().isoweekday() == 3:
         purchase = generate_purchase(year, month, day_from, day_to)
-        for date, day in purchase:
-            key = [date, day]
-            number_of_cups_per_purchase = purchase[tuple(key)]
+        print(purchase)
+        # Get unique days when purchases happen
+        purchase_day = set()
+        for day, t in purchase:
+            purchase_day.add(day)
 
-            # Calculate total number of cups and clients
-            sum_number_of_cups += number_of_cups_per_purchase
-            number_of_clients += 1
+        for d in purchase_day:
+            number_of_cups_per_day = 0
+            number_of_clients_per_day = 0
+            for date, day in purchase:
+                if d == date:
+                    key = [date, day]
 
-            # Print details for each purchase
-            output = f"Date of purchase is {date}. Time is {day}. Number of cups is {number_of_cups_per_purchase}."
+                    # Calculate number of cups and clients per day
+                    number_of_cups_per_day += purchase[tuple(key)]
+                    number_of_clients_per_day += 1
+
+            output = f"Date of purchase is {d}.  Number of cups is {number_of_cups_per_day}. Number of clients is {number_of_clients_per_day}"
             print(output)
-
-    # Print total
-    total = f"Total number of cups {sum_number_of_cups}. Total number of clients {number_of_clients}. "
-
-    return total
 
 
 print("Task3: generate report")
-print(generate_report(2021, 4, 28, 30))
+generate_report(2021, 4, 28, 30)
 
 
 # 4. Нужно посмотреть, в какое время дня у баристы были перерывы в работе.
@@ -96,7 +97,7 @@ def get_long_breaks(year, month, day_from, day_to):
         purchase_day.add(day)
     print(purchase_day)
 
-    # For each day get its time slots, sort them and find deltas
+    # For each day get its time of purchases, sort them and find deltas
     for day in purchase_day:
         purchase_time = []
         for d, t in purchase:
@@ -128,3 +129,33 @@ get_long_breaks(2021, 4, 28, 30)
 # 5. После перерасчёта оказалось, что для окупаемости, каждый день в кафе должно продаваться не меньше 20 чашек кофе.
 # Надо написать декоратор, который будет проверять кол-во чашек кофе на каждый день. И если их было меньше 20,
 # возвращать сообщение с ошибкой (подсказка: try/except).
+def my_decorator(fn):
+    def wrapped():
+        try:
+            return fn()
+        except Exception as e:
+            print("Error:", e)
+
+    return wrapped
+
+
+@my_decorator
+def get_number_of_cups():
+    # generate purchase per day
+    purchase = generate_purchase(2021, 4, 28, 28)
+
+    # calculate number of cups per day
+    purchase_cups_per_day = 0
+    for d, t in purchase:
+        purchase_cups_per_day += purchase[tuple([d, t])]
+
+    if purchase_cups_per_day < 20:
+        print(f"Day: {d} purchase_cups_per_day: {purchase_cups_per_day}")
+        raise Exception('Number of sold cups per day less than 20')
+    else:
+        print(f"Day: {d} purchase_cups_per_day: {purchase_cups_per_day}")
+
+print("Task5: raise error if number of cups <20 per day")
+get_number_of_cups()
+
+

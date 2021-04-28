@@ -104,7 +104,7 @@ def get_long_breaks(year, month, day_from, day_to):
                 purchase_time.append(t)
         print(f"Day: {day}")
 
-        # Add start and end working days to each day
+        # Add start and end working hours to each day
         purchase_time.append('09:00:00')
         purchase_time.append('20:00:00')
 
@@ -124,3 +124,7 @@ def get_long_breaks(year, month, day_from, day_to):
 
 print("Task4: get gaps")
 get_long_breaks(2021, 4, 28, 30)
+
+# 5. После перерасчёта оказалось, что для окупаемости, каждый день в кафе должно продаваться не меньше 20 чашек кофе.
+# Надо написать декоратор, который будет проверять кол-во чашек кофе на каждый день. И если их было меньше 20,
+# возвращать сообщение с ошибкой (подсказка: try/except).

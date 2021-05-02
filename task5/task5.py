@@ -85,10 +85,10 @@ hotel_room_royal.add_or_delete(bathroom_royal, 'delete')
 hotel = {}
 
 
-def add_rooms(roomtype, room_count):
-    if roomtype == 'royal':
+def add_rooms(room_type, room_count):
+    if room_type == 'royal':
         hotel_room = hotel_room_royal
-    elif roomtype == 'lux':
+    elif room_type == 'lux':
         hotel_room = hotel_room_lux
     else:
         hotel_room = hotel_room_st
@@ -96,7 +96,7 @@ def add_rooms(roomtype, room_count):
     for i in range(1, room_count):
         list_of_rooms.append(hotel_room)
 
-    hotel[roomtype] = list_of_rooms
+    hotel[room_type] = list_of_rooms
 
 
 # add rooms to the hotel
